@@ -30,7 +30,7 @@ function generateReceipt(cartItems, total) {
   });
   receipt += `Total: $${total.toFixed(2)}`; // Bug: total may not be a number  
   return receipt;
-    // 
+    // Added if statement to account for non number values
 }
 
 // Debugging entry point
