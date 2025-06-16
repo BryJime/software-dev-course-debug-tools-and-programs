@@ -15,14 +15,18 @@ function calculateTotal(cartItems) {
 }
 
 function applyDiscount(total, discountRate) {
+  if (discountRate < 0 || discountRate > 1){
+    console.log("Discount must be a decimal number between 0 and 1");
+    return "ERROR: Cannot apply discount"
+  }
   return total - (total * discountRate); // Bug: Missing validation for discountRate
     // Added parenthesis to isolate total * discount for proper discountRate. 
 }
 
 function generateReceipt(cartItems, total) {
-  if (total === isNaN){
+  if (total === isNaN || total === "ERROR: Cannot apply discount"){
     console.log("Total must be a number!");
-    return "ERROR: Cannot generate receipt!";
+    return "ERROR: Cannot generate receipt";
   }
   let receipt = "Items:\n";
   cartItems.forEach(item => {
@@ -36,7 +40,7 @@ function generateReceipt(cartItems, total) {
 // Debugging entry point
 console.log("Starting shopping cart calculation...");
 const totalItems = calculateTotal(cart);
-const discountedTotal = applyDiscount(totalItems, .2); // 20% discount
+const discountedTotal = applyDiscount(totalItems, 2.3); // 20% discount
 const receipt = generateReceipt(cart, discountedTotal);
 console.log(receipt);
 
