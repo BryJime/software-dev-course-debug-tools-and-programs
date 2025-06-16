@@ -20,7 +20,7 @@ function applyDiscount(total, discountRate) {
 }
 
 function generateReceipt(cartItems, total) {
-  if (total = isNaN){
+  if (total === isNaN){
     console.log("Total must be a number!");
     return "ERROR: Cannot generate receipt!";
   }
@@ -37,7 +37,7 @@ function generateReceipt(cartItems, total) {
 console.log("Starting shopping cart calculation...");
 const totalItems = calculateTotal(cart);
 const discountedTotal = applyDiscount(totalItems, .2); // 20% discount
-const receipt = generateReceipt(cart, isNaN);
+const receipt = generateReceipt(cart, discountedTotal);
 console.log(receipt);
 
 document.getElementById("total").textContent = `Total: $${discountedTotal}`;
